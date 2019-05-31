@@ -12,7 +12,7 @@
 */
 
 Route::get('/','HomeController@home')->name('home');
-Route::get('/portfolio-detail','HomeController@portfolioDetail')->name('portfolio-detail');
+Route::get('/portfolio-detail/{id}','HomeController@portfolioDetail')->name('portfolio-detail');
 
 Route::get('/login-form','Auth\LoginController@loginForm')->name('login-form');
 Route::post('/login','Auth\LoginController@login')->name('login');

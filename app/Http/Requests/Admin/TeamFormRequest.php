@@ -34,4 +34,12 @@ class TeamFormRequest extends FormRequest
             'image' => 'required_if:flag,0|image|mimes:png|dimensions:width=300,height=299'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'image.mimes' => 'Image must be .png',
+            'image.dimensions' => 'Image must be 300x299',
+        ];
+    }
 }

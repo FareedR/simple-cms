@@ -44,17 +44,14 @@ class BannerController extends Controller
         return view('admin.banners.edit',compact('banner'));
     }
 
-    public function updateBanner(Request $request,$id)
+    public function updateBanner(BannerFormRequest $request,$id)
     {
-        $request->validate([
-            'image' => 'image'
-        ]);
-
         $banner = Banner::findOrFail($id);
 
         if($request->hasFile('image')){
-            $oldImage = Storage::disk('public')->delete('{{ $banner->image }}');
+            $oldImage = \Storage::disk('public')->delete($banner->image);
             $image = $request->file('image')->store('banners','public');
+            $banner->image = $image;
         }
 
         $banner->title = $request->get('title');
@@ -64,16 +61,6 @@ class BannerController extends Controller
 
         toastr()->success('Banner has been updated');
         return redirect()->route('list-banner');
-    }
-
-    public function downloadBanner($image)
-    {
-        $file_path = storage_path().$image;
-        if(file_exists($file_path)){
-            return \Response::download($file_path,$image);
-        }else{
-            exit('Error');
-        }
     }
 
     public function deleteBanner($id)

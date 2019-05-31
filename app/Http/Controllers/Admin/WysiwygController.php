@@ -35,7 +35,7 @@ class WysiwygController extends Controller
     public function updateSkillWYSIWYG(Request $request)
     {
         $skillWysiwyg = Wysiwyg::updateOrCreate(
-            ['id' => 1],
+            ['id' => 2],
             ['content' => $request->get('content')]
         );
 

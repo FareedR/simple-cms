@@ -29,7 +29,7 @@ class BannerFormRequest extends FormRequest
     {
         return [
             'title' => 'required|min:6',
-            'image' => 'required|image|mimes:png|dimensions:width=1920,height=1076',
+            'image' => 'required_if:flag,0|image|mimes:png|dimensions:width=1900,height=1076',
             'description' => 'required|min:6',
             'status' => 'required'
         ];
@@ -39,7 +39,7 @@ class BannerFormRequest extends FormRequest
     {
         return [
             'image.mimes' => 'Image must be .png',
-            'image.dimensions' => 'Image must be 1920x1076',
+            'image.dimensions' => 'Image must be 1900x1076',
         ];
     }
 }

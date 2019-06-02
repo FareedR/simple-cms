@@ -13,6 +13,7 @@
 
 Route::get('/','HomeController@home')->name('home');
 Route::get('/portfolio-detail/{id}','HomeController@portfolioDetail')->name('portfolio-detail');
+Route::post('/send-email','HomeController@sendEmail')->name('send-email');
 
 Route::get('/login-form','Auth\LoginController@loginForm')->name('login-form');
 Route::post('/login','Auth\LoginController@login')->name('login');
